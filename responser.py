@@ -1,5 +1,9 @@
 import pandas as pd
+import os
 import requests
+
+# Initialize Groq API Key from environment variable
+groq_key = os.getenv("groq_key")  
 
 def call_groq_api(product_idea):
     headers = {
