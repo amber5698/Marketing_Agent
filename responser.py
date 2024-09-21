@@ -1,4 +1,22 @@
 import pandas as pd
+import requests
+
+def call_groq_api(product_idea):
+    headers = {
+        "Authorization": f"Bearer YOUR_GROQ_API_KEY",
+        "Content-Type": "application/json"
+    }
+    
+    payload = {
+        "query": f"Generate marketing strategies for {product_idea}"
+    }
+    
+    response = requests.post("https://api.groq.com/endpoint", headers=headers, json=payload)
+    
+    if response.status_code == 200:
+        return response.json()  # Process response as needed
+    else:
+        return {"error": "Failed to fetch data from Groq API"}
 
 def market_research(product_idea):
     # Simulate market research on the given product idea
